@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 200vh;
+    background-image: url("img/bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body.show {
+    overflow: hidden;
+}
+
+.menu-toggler {
+    margin: 25px;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    background-image: url("assets/menu.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+    position: fixed;
+}
+
+body.show .menu-toggler {
+    background-image: url("assets/close.svg");
+}
+
+.menu {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: grid;
+}
+
+.menu .row {
+    transition: 350ms ease-in-out;
+    position: relative;
+    height: 20vh;
+    left: -100%;
+    width: 100%;
+    background-color: rgba(3, 1, 8, 1);
+}
+
+body.show .menu .row {
+    left: 0;
+}
+
+.menu ul {
+    position: absolute;
+    display: inline-grid;
+    list-style: none;
+    opacity: 0;
+    transition: opacity 250ms ease-in-out 500ms;
+    visibility: hidden;
+    place-self: center;
+}
+
+body.show .menu ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+.menu ul li {
+    position: relative;
+    margin: 15px;
+    text-align: center;
+}
+
+.menu ul li::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    transform-origin: right;
+    transform: scaleX(0);
+    height: 2px;
+    background-color: white;
+    bottom: 0;
+    left: 0;
+    transition: transform 100ms linear;
+}
+
+
+.menu ul li:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
