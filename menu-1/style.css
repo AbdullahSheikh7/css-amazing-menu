@@ -19,6 +19,8 @@ body.show {
     position: fixed;
     top: 0;
     z-index: 1;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .navbar .menu-toggler {
@@ -33,12 +35,19 @@ body.show {
     z-index: 100;
 }
 
-body.show .navbar .menu-toggler {
+.menu .menu-toggler {
+    margin: 25px;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    top: 0;
+    left: 0;
     background-image: url("assets/close.svg");
-}
-
-body.hide .navbar .menu-toggler {
-    background-image: url("assets/menu.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 100;
+    position: absolute;
+    cursor: pointer;
 }
 
 .menu {
@@ -52,6 +61,7 @@ body.hide .navbar .menu-toggler {
     display: grid;
     place-items: center;
     transition: all 300ms ease-out;
+    z-index: 2;
 }
 
 body.show .menu {

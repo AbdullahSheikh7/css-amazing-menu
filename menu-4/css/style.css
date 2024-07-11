@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Outfit, sans-serif;
+}
+
+body {
+    height: 200vh;
+    background-image: url("../img/bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body.show {
+    overflow: hidden;
+}
+
+.menu-toggler {
+    margin: 25px;
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+body.hide .menu-toggler {
+    background-image: url("../assets/menu.svg");
+}
+
+body.show .menu-toggler {
+    background-image: url("../assets/close.svg");
+}
+
+.menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
+    display: grid;
+    place-items: center;
+    transition: all 300ms ease-out;
+}
+
+body.show .menu {
+    visibility: visible;
+    opacity: 1;
+}
+
+body.hide .menu {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.menu .control {
+    display: flex;
+    cursor: pointer;
+    margin: 15px;
+    padding: 10px;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.menu .control.control-left {
+    left: 0;
+}
+
+.menu .control.control-right {
+    right: 0;
+}
+
+body.show .menu .controls {
+    visibility: visible;
+    opacity: 1;
+}
+
+body.hide .menu .controls {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.menu .menu-outer-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.menu .menu-outer-container .menu-inner-container {
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    display: grid;
+    place-items: center;
+    left: 0;
+}
+
+.menu .menu-outer-container .menu-inner-container h1 {
+    font-size: 1.8rem;
+    color: lightgrey;
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+body.show .menu .menu-outer-container .menu-inner-container h1 {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 250ms ease-out 250ms;
+}
+
+.menu .menu-outer-container .menu-inner-container ul {
+    display: inline-grid;
+    list-style: none;
+}
+
+.menu .menu-outer-container .menu-inner-container ul li {
+    margin: 15px;
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+.menu .menu-outer-container .menu-inner-container ul li::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    transform-origin: right;
+    transform: scaleX(0);
+    height: 2px;
+    background-color: white;
+    bottom: 0;
+    left: 0;
+    transition: transform 100ms linear;
+}
+
+.menu .menu-outer-container .menu-inner-container ul li:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+body.show .menu .menu-outer-container .menu-inner-container ul li {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 250ms ease-out calc(250ms + var(--i));
+}
+
+.menu .menu-outer-container .menu-inner-container ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 2.5rem;
+}
